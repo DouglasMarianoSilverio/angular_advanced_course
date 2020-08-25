@@ -2,7 +2,7 @@ import { ProdutoService } from './produtos/produtos.services';
 import { rootRouterConfig } from './app.routes';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 
 import {registerLocaleData } from '@angular/common';
 import  localePt  from "@angular/common/locales/pt";
@@ -19,6 +19,12 @@ import { APP_BASE_HREF } from '@angular/common';
 import { DataBindingComponent } from './demos/data-binding/data-binding.component';
 import { ListaProdutoComponent } from './produtos/lista-produto/lista-produto.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CadastroComponent } from './demos/reactiveForms/cadastro/cadastro.component';
+import { NgBrazil } from 'ng-brazil';
+import { TextMaskModule } from 'angular2-text-mask';
+import { CustomFormsModule  } from 'ngx-custom-validators';
+
+
 
 
 
@@ -32,15 +38,22 @@ import { HttpClientModule } from '@angular/common/http';
     ContatoComponent,
     DataBindingComponent,
     ListaProdutoComponent,
+    CadastroComponent,
 
     
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(rootRouterConfig, {useHash:false}),
-    HttpClientModule 
-    
+    HttpClientModule ,
+    NgBrazil,
+    TextMaskModule, 
+    ReactiveFormsModule,
+    CustomFormsModule  
+
+
   ],
   providers: [
     ProdutoService,

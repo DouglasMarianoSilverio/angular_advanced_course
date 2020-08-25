@@ -1,0 +1,75 @@
+<div class="container main-container">
+    <h4>Demo Cadastro</h4>
+    <hr/>
+    <form class="novalidate" (ngSubmit)="adicionarUsuario()" [formGroup]="cadastroForm">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="col-md-2 control-label" >Nome Completo</label>
+                
+                <div class="cold-md-10">
+                    <input type="text" class="form-control" id="nome" placeholder="Nome (requerido)" formControlName="nome" >
+                    <span class="text-danger" *ngIf="cadastroForm.get('nome').errors && (cadastroForm.get('nome').touched || cadastroForm.get('nome').dirty)" >
+                        <p>Preencha o campo Nome</p>
+                    </span>
+                </div>
+                
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="cpf">CPF</label>
+                <div class="cold-md-10">
+                    <input type="text" class="form-control" id="cpf" placeholder="CPF (requerido)" formControlName="cpf"  [textMask]="{mask: MASKS.cpf.textMask}">
+                    <span class="text-danger" *ngIf="cadastroForm.get('cpf')?.errors?.required && (cadastroForm.get('cpf').touched || cadastroForm.get('cpf').dirty)" >
+                        <p>CPF Invalido</p>
+                    </span>
+                </div>
+            </div>        
+            
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="email">E-mail</label>
+                <div class="cold-md-10">
+                    <input type="text" class="form-control" id="email" placeholder="Email (requerido)" formControlName="email">
+                    <span class="text-danger" *ngIf="cadastroForm.get('email')?.errors?.required && (cadastroForm.get('email').touched || cadastroForm.get('email').dirty)" >
+                        <p>Preencha o campo Email</p>
+                    </span>
+                    <span class="text-danger" *ngIf="cadastroForm.get('email')?.errors?.email && (cadastroForm.get('nome').touched || cadastroForm.get('email').dirty)" >
+                        <p>Formato do e-mail invalido</p>
+                    </span>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="senha">Senha</label>
+                <div class="cold-md-10">
+                    <input type="password" class="form-control" id="senha" placeholder="Senha (requerido)" formControlName="senha">
+                    <span class="text-danger" *ngIf="cadastroForm.get('senha')?.errors?.required && (cadastroForm.get('senha').touched || cadastroForm.get('senha').dirty)" >
+                        <p>Preencher o campo senha</p>
+                    </span>
+                    <span class="text-danger" *ngIf="cadastroForm.get('senha')?.errors?.rangeLength && (cadastroForm.get('senha').touched || cadastroForm.get('senha').dirty)" >
+                        <p>Senha invalida</p>
+                    </span>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="senhaConfirmacao">Senha</label>
+                <div class="cold-md-10">
+                    <input type="password" class="form-control" id="senhaConfirmacao" placeholder="Confirme a Senha (requerido)" formControlName="senhaConfirmacao">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="cold-md-4 col-md-offset-2">
+                    <span> <button class="btn btn-success" id="Registrar" type="submit" [disabled]="!cadastroForm.valid" >Registrar</button></span>
+                </div>
+            </div>
+            
+            <div class="form-group">            
+                <div class="cold-md-4 col-md-offset-2" >
+                    <p>Fomulario Valido : {{ cadastroForm.valid }}</p>
+                    <p>Fomulario tocado : {{ cadastroForm.touched }}</p>
+                    <p>Fomulario sujo : {{ cadastroForm.dirty }}</p>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
